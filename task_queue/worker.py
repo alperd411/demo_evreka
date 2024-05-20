@@ -80,10 +80,6 @@ def my_monitor(app):
 """
 
 
-    @celery.task(name="add_location")
-    @celery.task(name="list_devices")
-    @celery.task(name="get_last_location")
-    @celery.task(name="delete_device")
-    @celery.task(name="get_device_information")
+ 
 
 """

@@ -1,6 +1,5 @@
 from datetime import datetime, timezone
 
-from psycopg2._psycopg import List
 from sqlalchemy import Column, String, Integer, ForeignKey, FLOAT
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 
@@ -34,4 +33,4 @@ class Location(Base):
         self.latitude = latitude
         self.longitude = longitude
         self.device_id = device_id
-        self.time_stamp = '123'
+        self.time_stamp = datetime.now(timezone.utc).strftime("%Y/%m/%d, %H:%M:%S")

@@ -3,18 +3,11 @@ import os
 import uvicorn
 from fastapi import FastAPI
 
-
-import celery
-from celery import Celery
-
-
 from dao.repositories.device_repository import DeviceRepository
 from request_objects.device import DeviceRequest
 from request_objects.location import LocationRequest
 
 from task_queue.worker import TaskQueue
-
-
 
 
 
@@ -40,8 +33,9 @@ async def list_devices():
 @app.get("/device/{device_id}")
 async def last_location_byid(device_id:int):
     return repo.get_lastlocation_byid(device_id);
-@app.get("/device/{device_id}")
+@app.get("/device/history/{device_id}")
 async def histroy_by_deviceid(device_id:int):
+    #make better view
     return repo.locations_by_deviceid(device_id)
 
 
@@ -54,7 +48,7 @@ async def add_location_by_device_id(device_id: int, location: LocationRequest):
 
 @app.delete("/device/{device_id}")
 async def delete_device_byid(device_id: int):
-    repo.delete_device_byid(device_id)
+    queue.delete_device_byid(device_id)
 
 @app.get("/test")
 async def celery_test():
