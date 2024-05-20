@@ -1,1 +1,1 @@
-![swagger.PNG](..%2F..%2Fswagger.PNG)
+![swagger.PNG](swagger.PNG)
